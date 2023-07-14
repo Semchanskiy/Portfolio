@@ -1,0 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StandartBlock : Block
+{
+    protected override void Specifications()
+    {
+        base.Specifications();
+        _score = 3;
+    }
+}
