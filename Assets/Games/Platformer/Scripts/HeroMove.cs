@@ -45,7 +45,6 @@ public class HeroMove : MonoBehaviour
     {
 
              _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
-        Debug.Log("Syka");
 
 
     }
