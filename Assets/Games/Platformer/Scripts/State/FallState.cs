@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpState : State
+public class FallState : State
 {
     private PlatformerPlayer _player; // инициализируем игрока
 
-    public JumpState(PlatformerPlayer player) // конструктор
+    public FallState(PlatformerPlayer player) // конструктор
     {
         _player = player; // присваиваем переменной игрока
     }
@@ -14,19 +14,18 @@ public class JumpState : State
     public override void Enter()
     {
         base.Enter();
-        //_player.Jump();
-        _player._anim.SetBool("Jump", true);
+        _player._anim.SetBool("Fall", true);
     }
 
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-
+        //Debug.Log("1");
     }
 
     public override void Exit()
     {
-        _player._anim.SetBool("Jump", false);
+        _player._anim.SetBool("Fall", false);
         base.Exit();
     }
 }
