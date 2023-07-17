@@ -9,14 +9,18 @@ public class PlatformerPlayer : MonoBehaviour
     private IdleState _idleState; // переменная состояния
     private JumpState _jumpState; // переменная состояния
     private FallState _fallState; // переменная состояния
+    private Vector2 _inputMove;
+    private Vector2 _targetSpeed;
     private float _horizontalMove;
+    private float _dirX;
 
 
     [HideInInspector] public Animator _anim;
     private Rigidbody2D _rb;
     private BoxCollider2D _boxCollider2D;
+    private SpriteRenderer _sprite;
 
-    //[SerializeField] private Transform _groundChecker;
+    [SerializeField] private BoxCollider2D _groundChecker;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool _isGrounded = false;
 
@@ -25,7 +29,11 @@ public class PlatformerPlayer : MonoBehaviour
     
 
     public float speed;
+    public float maxSpeed;
     public float jumpForse;
+    [SerializeField] private float _acceleration;
+    [SerializeField] private float _decceleration;
+    [SerializeField] private float velPower;
 
     void Awake()
     {
@@ -41,6 +49,7 @@ public class PlatformerPlayer : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
+        _sprite = GetComponent<SpriteRenderer>();
 
     }
     void Start()
@@ -56,21 +65,39 @@ public class PlatformerPlayer : MonoBehaviour
     }
     public void HorizontalMove()
     {
-        Vector2 deltaX = _input.Player.Move.ReadValue<Vector2>() * speed * Time.deltaTime;
-        Vector2 movement = new Vector2(deltaX.x, _rb.velocity.y);
-        _rb.velocity = movement;
+        _inputMove = _input.Player.Move.ReadValue<Vector2>();
+        //if (_inputMove.x !=0) 
+        //{
+        _targetSpeed = _inputMove * speed;  // скорость основанная на входных данных
+        float speedDifX = _targetSpeed.x - _rb.velocity.x; // разница между текущей скоростью и скоростью основанной на входных данных
+        float accelRate = (Mathf.Abs(_targetSpeed.x) > 0.01f) ? _acceleration : _decceleration; // ускорение в зависимости нажата ли кнопка
+        float movement = Mathf.Pow(Mathf.Abs(speedDifX) * accelRate, velPower) * Mathf.Sign(speedDifX); // чем 
+
+        _rb.AddForce(movement * Vector2.right);
+        //}
     }
+
+    //private void Flip()
+    //{
+       // _dirX = _
+       // _sprite.flipY = true;
+    //}
 
     void FixedUpdate()
     {
-        _isGrounded = Physics2D.BoxCast(_boxCollider2D.bounds.center, _boxCollider2D.bounds.size, 0f, Vector2.down ,.01f, groundLayer);
-        Vector2 deltaX = _input.Player.Move.ReadValue<Vector2>();
-        _horizontalMove = deltaX.x;
+        GroundCheck();
+
         HorizontalMove();
         CheckState();
         Debug.Log(_SM.CurrentState);
         
 
+    }
+
+    private void GroundCheck()
+    {
+        _isGrounded = Physics2D.BoxCast(_groundChecker.bounds.center,_groundChecker.bounds.size, 0f, Vector2.down, .01f, groundLayer);
+        
     }
 
     void Update()
