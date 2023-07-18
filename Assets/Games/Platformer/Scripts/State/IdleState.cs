@@ -17,11 +17,6 @@ public class IdleState : State
         _player._anim.SetBool("Idle", true);
     }
 
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        //Debug.Log("1");
-    }
 
     public override void Exit()
     {

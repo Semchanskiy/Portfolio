@@ -1596,17 +1596,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 0}
+  _maxIdleSpeed: 3
+  speed: 200
+  jumpForse: 7
+  _acceleration: 0.2
+  _decceleration: 15
+  velPower: 1
   _groundChecker: {fileID: 790244082}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   _isGrounded: 0
-  speed: 200
-  maxSpeed: 0
-  jumpForse: 6
-  _acceleration: 0.2
-  _decceleration: 15
-  velPower: 1
 --- !u!114 &574477050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1799,7 +1799,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0091199875, y: -0.01}
+  m_Offset: {x: 0.011501908, y: -0.01}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1810,7 +1810,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7817602, y: 0.029999997}
+  m_Size: {x: 0.77260375, y: 0.029999997}
   m_EdgeRadius: 0
 --- !u!1 &2095598830
 GameObject:

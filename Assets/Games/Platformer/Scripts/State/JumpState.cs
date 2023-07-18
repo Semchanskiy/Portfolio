@@ -18,12 +18,6 @@ public class JumpState : State
         _player._anim.SetBool("Jump", true);
     }
 
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-
-    }
-
     public override void Exit()
     {
         _player._anim.SetBool("Jump", false);

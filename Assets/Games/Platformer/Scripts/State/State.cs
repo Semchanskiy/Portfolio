@@ -10,9 +10,9 @@ public abstract class State
         
     }
 
-    public virtual void FixedUpdate()
+    public virtual void Update()
     {
-       
+        
     }
 
     public virtual void Exit()

@@ -17,13 +17,6 @@ public class WalkState : State
         _player._anim.SetBool("Walk", true);
     }
 
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        
-
-    }
-
     public override void Exit()
     {
         _player._anim.SetBool("Walk", false);

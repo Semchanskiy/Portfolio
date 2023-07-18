@@ -16,13 +16,6 @@ public class FallState : State
         base.Enter();
         _player._anim.SetBool("Fall", true);
     }
-
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        //Debug.Log("1");
-    }
-
     public override void Exit()
     {
         _player._anim.SetBool("Fall", false);

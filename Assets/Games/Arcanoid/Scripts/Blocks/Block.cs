@@ -34,6 +34,7 @@ public abstract class Block : MonoBehaviour
             { 
             anim.SetBool("Destroy", true); // блок уничтожается
                 CalculationCenter.AddDamage(_score); // добавить урон к общему значению
+                
 
             }
             else
