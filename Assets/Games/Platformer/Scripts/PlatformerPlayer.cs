@@ -16,6 +16,11 @@ public class PlatformerPlayer : MonoBehaviour
     [HideInInspector] public Animator _anim;
     [SerializeField] private PlatformerInput _input;
 
+    [SerializeField] private AudioSource _soundJump;
+    [SerializeField] private AudioSource _soundStep;
+    private float _nextStep = 0.0f;
+    [SerializeField] private float _stepRate;
+
     #region Movement
     private Vector2 _inputMove;
     private Vector2 _targetSpeed;
@@ -68,12 +73,20 @@ public class PlatformerPlayer : MonoBehaviour
         if (_isGrounded) 
         { 
         _rb.AddForce(Vector2.up * jumpForse, ForceMode2D.Impulse);
+        _soundJump.Play();
         }
     }
 
     public void HorizontalMove()
     {
         _inputMove = _input.Player.Move.ReadValue<Vector2>();
+
+        if (Time.time > _nextStep && _SM.CurrentState == _walkState)
+        {
+            _nextStep = Time.time + _stepRate;
+            _soundStep.pitch = Random.Range(0.8f, 1.2f);            
+            _soundStep.Play();
+        }
 
         _targetSpeed = _inputMove * speed;  // скорость основанная на входных данных
         float speedDifX = _targetSpeed.x - _rb.velocity.x; // разница между текущей скоростью и скоростью основанной на входных данных
