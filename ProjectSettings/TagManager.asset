@@ -12,6 +12,8 @@ TagManager:
   - StartBlock
   - Block
   - Enemy
+  - Trap
+  - DeathEnemy
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Water
   - UI
   - groundLayer
-  - 
-  - 
+  - Enemy
+  - Trap
   - 
   - 
   - 

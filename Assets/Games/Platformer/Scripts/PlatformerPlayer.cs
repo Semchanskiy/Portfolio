@@ -7,10 +7,13 @@ public class PlatformerPlayer : MonoBehaviour
     #region StateMachine
     private StateMachine _SM; // переменная StateMachine
     private WalkState _walkState; // переменная состояния
-    private IdleState _idleState; // переменная состояния
-    private JumpState _jumpState; // переменная состояния
-    private FallState _fallState; // переменная состояния
+    private IdleState _idleState; 
+    private JumpState _jumpState; 
+    private FallState _fallState; 
     #endregion
+
+    [SerializeField] private LayerMask _trapMask;
+    [SerializeField] private LayerMask groundLayer;
 
     private Rigidbody2D _rb;
     [HideInInspector] public Animator _anim;
@@ -28,12 +31,12 @@ public class PlatformerPlayer : MonoBehaviour
     private bool _isFacingRight = true;
     public float speed;
     public float jumpForse;
+    public int _lives;
     [SerializeField] private float _acceleration;
     [SerializeField] private float _decceleration;
     [SerializeField] private float velPower; // величина прилагаемой силы
 
     [SerializeField] private BoxCollider2D _groundChecker;
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool _isGrounded = false;
     #endregion
 
@@ -147,24 +150,49 @@ public class PlatformerPlayer : MonoBehaviour
 
     private void CheckState()
     {
+
         if (_isGrounded == true && Mathf.Abs(_rb.velocity.x) > 0.1f)
         {
             _SM.ChangeState(_walkState);
+            return;
         }
 
         if (_isGrounded == false && _rb.velocity.y>0)  
         {
             _SM.ChangeState(_jumpState);
+            return;
         }
 
         if (_isGrounded == true && Mathf.Abs(_rb.velocity.x) < 0.1f)
         {
             _SM.ChangeState(_idleState);
+            return;
         }
 
         if (_isGrounded == false && _rb.velocity.y < 0)
         {
             _SM.ChangeState(_fallState);
+            return;
         }
+
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if(collision.gameObject.tag== "Trap")
+        {
+            Destroy();
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+           Destroy();
+        }
+    }
+
+    private void Destroy()
+    {
+        gameObject.SetActive(false);
     }
 }
