@@ -38,6 +38,8 @@ public class PlatformerPlayer : MonoBehaviour
 
     [SerializeField] private BoxCollider2D _groundChecker;
     [SerializeField] private bool _isGrounded = false;
+    private SpawnManager _spawnManager;
+    private MovingCamera _movingCamera;
     #endregion
 
     void Awake()
@@ -58,7 +60,10 @@ public class PlatformerPlayer : MonoBehaviour
 
     void Start()
     {
+        _spawnManager = GameObject.FindAnyObjectByType<SpawnManager>();
+        _movingCamera = GameObject.FindAnyObjectByType<MovingCamera>();
         _SM.Initialize(_idleState); // при старте вызываем состояние покоя
+
     }
 
     private void OnEnable()
@@ -177,22 +182,27 @@ public class PlatformerPlayer : MonoBehaviour
 
         
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if(collision.gameObject.tag== "Trap")
+        if (collision.gameObject.tag== "Trap")
         {
             Destroy();
         }
         if (collision.gameObject.tag == "Enemy")
         {
-           Destroy();
+            Destroy();
         }
     }
 
     private void Destroy()
     {
         gameObject.SetActive(false);
+        _spawnManager.CreatePlayer();
+        _movingCamera.FindPlayer();
     }
 }

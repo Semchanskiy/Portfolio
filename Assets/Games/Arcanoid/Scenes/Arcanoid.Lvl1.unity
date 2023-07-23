@@ -5303,7 +5303,6 @@ GameObject:
   m_Component:
   - component: {fileID: 994703027}
   - component: {fileID: 994703026}
-  - component: {fileID: 994703028}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -5338,18 +5337,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &994703028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994703025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935ce97f169e4514c80df1593efecdca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &997576441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3153374736250028447, guid: 13f924f1317980649865d5553a986f53,
@@ -9902,9 +9889,9 @@ MonoBehaviour:
   m_RefResolutionY: 1080
   m_UpscaleRT: 0
   m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!4 &1718536392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7752200275748398776, guid: 2b978534c49127b4ba7b770fe397c023,

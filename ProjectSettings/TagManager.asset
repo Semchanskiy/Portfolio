@@ -14,6 +14,7 @@ TagManager:
   - Enemy
   - Trap
   - DeathEnemy
+  - RoofEnemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - groundLayer
   - Enemy
   - Trap
-  - 
+  - RoofEnemy
   - 
   - 
   - 
