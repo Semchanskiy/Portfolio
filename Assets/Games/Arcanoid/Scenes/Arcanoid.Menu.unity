@@ -207,7 +207,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 698381345}
-        m_TargetAssemblyTypeName: SceneManage, Assembly-CSharp
+        m_TargetAssemblyTypeName: UniversalScenes, Assembly-CSharp
         m_MethodName: StartMenu
         m_Mode: 1
         m_Arguments:
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 698381345}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
         m_MethodName: LoadLvl2
         m_Mode: 1
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 698381345}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
         m_MethodName: LoadLvl3
         m_Mode: 1
@@ -1020,9 +1020,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698381344}
+  - component: {fileID: 698381346}
   - component: {fileID: 698381345}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ScenesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,7 +1053,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 698381342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384b289541c8df04ead9c7f61518a242, type: 3}
+  m_Script: {fileID: 11500000, guid: 702ea16be90aef142ad0badd26ec71e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &698381346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698381342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1227f22c4f463459fd5e6da0d49e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &759523099
@@ -1562,9 +1575,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 698381345}
-        m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
-        m_MethodName: LoadArcanoidLvl1
+      - m_Target: {fileID: 698381346}
+        m_TargetAssemblyTypeName: ArcanoidScenes, Assembly-CSharp
+        m_MethodName: StartLvl1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

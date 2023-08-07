@@ -208,9 +208,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 474412070}
-        m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
-        m_MethodName: LoadPlatformerLevels
+      - m_Target: {fileID: 474412072}
+        m_TargetAssemblyTypeName: PlatformerScenes, Assembly-CSharp
+        m_MethodName: StartLvl1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &44626169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,26 +2835,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474412071}
-  - component: {fileID: 474412070}
+  - component: {fileID: 474412073}
+  - component: {fileID: 474412072}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: PlatformerScenes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &474412070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474412069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384b289541c8df04ead9c7f61518a242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &474412071
 Transform:
   m_ObjectHideFlags: 0
@@ -2870,6 +2859,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &474412072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474412069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef8f64ecc2b5504e9dda2fb96274701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &474412073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474412069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702ea16be90aef142ad0badd26ec71e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &924371870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2910,7 +2923,7 @@ PrefabInstance:
     - target: {fileID: 2866027195122179419, guid: 2422c4d2ae0b8be469d2305f50e7de4e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.76
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 2866027195122179419, guid: 2422c4d2ae0b8be469d2305f50e7de4e,
         type: 3}
@@ -3334,8 +3347,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 474412070}
-        m_TargetAssemblyTypeName: SceneManagers, Assembly-CSharp
+      - m_Target: {fileID: 474412073}
+        m_TargetAssemblyTypeName: UniversalScenes, Assembly-CSharp
         m_MethodName: StartMenu
         m_Mode: 1
         m_Arguments:

@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Games/Menu/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Games/MemoryCard/Scenes/Game.MemoryCard.unity
+    path: Assets/Games/MemoryCard/Scenes/MemoryCard.Lvl1.unity
     guid: 34a8ffceacf180140891aab06d099663
   - enabled: 1
     path: Assets/Games/Arcanoid/Scenes/Arcanoid.Lvl1.unity
@@ -17,6 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Games/Arcanoid/Scenes/Arcanoid.Menu.unity
     guid: a9f4ac4705d138041bd06558a35be028
+  - enabled: 1
+    path: Assets/Games/Balless/Scenes/Balless.Lvl1.unity
+    guid: af94d3f91b60e0a49a8d2d2a6db4774f
+  - enabled: 1
+    path: Assets/Games/Platformer/Scenes/Platformer.Lvl1.unity
+    guid: bf26332d44afac94aa683be82ba3c337
+  - enabled: 1
+    path: Assets/Games/Platformer/Scenes/Platformer.Menu.unity
+    guid: 20b8dcb302e66f4438cf358acffed82c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0b040ebdf1ca6254fb5241e10d7657c0,
       type: 2}
