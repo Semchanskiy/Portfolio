@@ -36,13 +36,13 @@ public class PBall : MonoBehaviour
         if(collision.gameObject.tag == "Platforma")
         {
             _collisions = 0;
-            _platforma.TakeData(_collisions);
+            _platforma.TakeCollisionsCount(_collisions);
         }
 
         else
         {
             _collisions++;
-            _platforma.TakeData(_collisions);
+            _platforma.TakeCollisionsCount(_collisions);
         }
     }
 }

@@ -9,16 +9,19 @@ public class Platforma : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private PBall _ball;
 
-    [SerializeField] private InputPlatforma _input;
     private Vector2 _rotateInput;
     private Camera _camera;
+    private InputPlatforma _input;
+
+    [Header("Move Settings")]
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _speedMove;
     [SerializeField] private float _cooldown;
-    private Vector2 _force;
     [SerializeField] private float _power;
 
-    [SerializeField] private bool _isActive;
+    private Vector2 _force;
+
+    [SerializeField] private bool _isActive = true;
     [SerializeField] private float _minCollisions;
     private bool _timeCollision = false;
     private float _collisions;
@@ -38,7 +41,7 @@ public class Platforma : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    public void TakeData(float _col)
+    public void TakeCollisionsCount(float _col)
     {
         _collisions = _col;
         CheckActive();
@@ -69,6 +72,17 @@ public class Platforma : MonoBehaviour
     {
         _boxCollider2D.enabled = true;
         _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.b, _spriteRenderer.color.g, 1f);
+        _isActive = !_isActive;
+    }
+    private void DisActivatedPlatform()
+    {
+        _isActive = !_isActive;
+        _timeCollision = false;
+        _boxCollider2D.enabled = false;
+        _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.b, _spriteRenderer.color.g, 0.3f);
+        StartCoroutine(EnablePlatform());
+        _force = _ball.GetComponent<Rigidbody2D>().velocity * _power;
+        StartCoroutine(AddForce(_force));
     }
 
     void Update()
@@ -114,12 +128,7 @@ public class Platforma : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pball")
         {
-            _boxCollider2D.enabled = false;
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.b, _spriteRenderer.color.g, 0.3f);
-            StartCoroutine(EnablePlatform());
-            _force = _ball.GetComponent<Rigidbody2D>().velocity * _power;
-            StartCoroutine(AddForce(_force));
-
+            DisActivatedPlatform();
         }
         
     }
