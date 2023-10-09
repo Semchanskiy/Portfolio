@@ -22,7 +22,7 @@ public class MenuScenes : MonoBehaviour
 
     public void StartBalless()
     {
-        SceneManager.LoadScene("Balles.Lvl1");
+        SceneManager.LoadScene("Balless.Lvl1");
     }
 
 }
