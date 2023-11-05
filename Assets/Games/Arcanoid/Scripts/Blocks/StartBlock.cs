@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StartBlock : MonoBehaviour
+namespace GameArcanoid
 {
-    protected virtual void Awake()
+    public abstract class StartBlock : MonoBehaviour
     {
-        
+        protected virtual void Awake()
+        {
+
+        }
     }
 }

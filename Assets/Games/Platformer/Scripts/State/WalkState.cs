@@ -1,25 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.StandaloneInputModule;
+using UnityEngine.Windows;
 
-public class WalkState : State
+namespace GamePlatformer
 {
-    private PlatformerPlayer _player; // инициализируем игрока
-
-    public WalkState(PlatformerPlayer player) // конструктор
+    public class WalkState : State
     {
-        _player = player; // присваиваем переменной игрока
-    }
+        private PlayerController _playerController; // инициализируем игрока
 
-    public override void Enter()
-    {
-        base.Enter();
-        _player._anim.SetBool("Walk", true);
-    }
+        public WalkState(PlayerController playerController) // конструктор
+        {
+            _playerController = playerController; // присваиваем переменной игрока
+        }
 
-    public override void Exit()
-    {
-        _player._anim.SetBool("Walk", false);
-        base.Exit();
+        public override void Enter()
+        {
+            base.Enter();
+            _playerController.View._anim.CrossFade("Walk", 0);
+        }
+
+        public override void FixedUpdate()
+        {
+            _playerController.HorizontalMove();
+            CheckState();
+        }
+
+
+
+        public override void CheckState()
+        {
+            _playerController.CheckStateFall();
+            _playerController.CheckStateJump();
+            _playerController.CheckStateIdle();
+        }
+
+
+
+
+
+        public override void Exit()
+        {
+            base.Exit();
+        }
     }
 }

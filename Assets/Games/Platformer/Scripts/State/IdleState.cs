@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class IdleState : State
+namespace GamePlatformer
 {
-    private PlatformerPlayer _player; // инициализируем игрока
-
-    public IdleState(PlatformerPlayer player) // конструктор
+    public class IdleState : State
     {
-        _player = player; // присваиваем переменной игрока
-    }
+        private PlayerController _playerController; // инициализируем игрока
 
-    public override void Enter()
-    {
-        base.Enter();
-        _player._anim.SetBool("Idle", true);
-    }
+        public IdleState(PlayerController playerController)
+        {
+            _playerController = playerController; // присваиваем переменной игрока
+        }
 
+        public override void Enter()
+        {
+            _playerController.View._anim.CrossFade("Idle", 0);
+        }
 
-    public override void Exit()
-    {
-        _player._anim.SetBool("Idle", false);
-        base.Exit();
+        public override void FixedUpdate()
+        {
+            CheckState();
+        }
+
+        public override void Exit()
+        {
+
+        }
+
+        public override void CheckState()
+        {
+            _playerController.CheckStateWalk();
+            _playerController.CheckStateFall();
+            _playerController.CheckStateJump();
+        }
     }
 }

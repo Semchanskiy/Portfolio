@@ -3,95 +3,107 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallMove : MonoBehaviour
+namespace GameArcanoid
 {
-    private Rigidbody2D _rb;
-    private PlayerMove _platform; // игрок - платформа
-
-    private bool _isActiv;
-
-    //private float Speed = 1f;
-    private float _vertForce = 0;
-    private float _horizForce = 3; 
-    private float _platformCenterPosition; // переменная центра пталформы
-    private float _ballPositionY; // позиция мяча по Y
-
-
-    private void Start()
+    public class BallMove : MonoBehaviour
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _platform = GameObject.FindAnyObjectByType<PlayerMove>();
-    }
+        private Rigidbody2D _rb;
+        private PlayerMove _platform; // игрок - платформа
 
-    private void Update()
-    {
-        if (!_isActiv) // если мяч не активен
+        private bool _isActiv;
+
+        //private float Speed = 1f;
+        private float _vertForce = 0;
+        private float _horizForce = 3;
+        private float _platformCenterPosition; // переменная центра пталформы
+        private float _ballPositionY; // позиция мяча по Y
+
+
+        private void Start()
         {
-            if(Math.Abs(_platform.transform.position.y - transform.position.y) >= 1.2f) // проверяет разницу по оси Y между платформой и мячом
+            _rb = GetComponent<Rigidbody2D>();
+            _platform = GameObject.FindAnyObjectByType<PlayerMove>();
+        }
+
+        private void Update()
+        {
+            if (!_isActiv) // если мяч не активен
             {
-                //transform.position = new Vector2(transform.position.x, _platform.transform.position.y - transform.position.y); 
-                if (_platform.transform.position.y - transform.position.y <= -1.2f) // ставит его возле верхнего края платформы
+                if (Math.Abs(_platform.transform.position.y - transform.position.y) >=
+                    1.2f) // проверяет разницу по оси Y между платформой и мячом
                 {
-               transform.position = new Vector2(transform.position.x,_platform.transform.position.y + 1.2f);
-               }
-               if (_platform.transform.position.y - transform.position.y >= 1.2f)   // ставит его возле нижнегоы края платформы
+                    //transform.position = new Vector2(transform.position.x, _platform.transform.position.y - transform.position.y); 
+                    if (_platform.transform.position.y - transform.position.y <=
+                        -1.2f) // ставит его возле верхнего края платформы
+                    {
+                        transform.position = new Vector2(transform.position.x, _platform.transform.position.y + 1.2f);
+                    }
+
+                    if (_platform.transform.position.y - transform.position.y >=
+                        1.2f) // ставит его возле нижнегоы края платформы
+                    {
+                        transform.position = new Vector2(transform.position.x, _platform.transform.position.y - 1.2f);
+                    }
+                }
+
+
+                if (Input.GetKeyDown(KeyCode.Space)) // нажата клавиша Space
                 {
-                   transform.position = new Vector2(transform.position.x, _platform.transform.position.y - 1.2f);
-               }
+                    BallActivete(); //вызвать метод активации мяча
+                }
+
             }
-
-
-            if (Input.GetKeyDown(KeyCode.Space))  // нажата клавиша Space
-           {
-               BallActivete(); //вызвать метод активации мяча
-           }
-
         }
-    }
 
-    private void BallActivete() // метод активации мяча
-    {
-        _isActiv = true; // переводим в активное состояние
-        CalculationsMove(); // проводим расчеты отклонения от платформы
-        Move(_horizForce,_vertForce); // при первом запуске мяча кидаем его влево
-    }
-    private void CalculationsMove() // проводим расчеты отклонения от платформы
-    {
-        _ballPositionY = transform.position.y; // позиция мяча по Y
-        _platformCenterPosition = _platform.gameObject.GetComponent<Transform>().position.y; // центр платформы
-        float difference = (_ballPositionY - _platformCenterPosition);//разница между центром платформы и центром мяча
-        if (Math.Abs(difference) > 1.5f) // резулируем максимальное отклонение отскока мяча от платформы
+        private void BallActivete() // метод активации мяча
         {
-            if (difference > 0)
+            _isActiv = true; // переводим в активное состояние
+            CalculationsMove(); // проводим расчеты отклонения от платформы
+            Move(_horizForce, _vertForce); // при первом запуске мяча кидаем его влево
+        }
+
+        private void CalculationsMove() // проводим расчеты отклонения от платформы
+        {
+            _ballPositionY = transform.position.y; // позиция мяча по Y
+            _platformCenterPosition = _platform.gameObject.GetComponent<Transform>().position.y; // центр платформы
+            float difference =
+                (_ballPositionY - _platformCenterPosition); //разница между центром платформы и центром мяча
+            if (Math.Abs(difference) > 1.5f) // резулируем максимальное отклонение отскока мяча от платформы
             {
-                difference = 1.5f;
+                if (difference > 0)
+                {
+                    difference = 1.5f;
+                }
+                else
+                {
+                    difference = -1.5f;
+                }
             }
-            else
+
+            _vertForce = difference * 2; // присваиваем значение на которое отклониться мяч отскочив от платформы
+        }
+
+        private void Move(float x, float y) // даем направление мячу 
+        {
+            _rb.velocity = new Vector2(x, y);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision) // если мяч сталкнется с чем либо
+        {
+            _ballPositionY = transform.position.y; //записывается положение мяча при любом касании
+
+            if (collision.gameObject.TryGetComponent(out PlayerMove player)) // при соприкосновении с платформой
             {
-                difference = -1.5f;
+                CalculationsMove();
+                Move(_horizForce, _vertForce); // даем направление мячу
             }
-        }
-        _vertForce = difference * 2; // присваиваем значение на которое отклониться мяч отскочив от платформы
-    }
-    private void Move(float x,float y) // даем направление мячу 
-    {
-        _rb.velocity = new Vector2(x, y);
-    }
-    private void OnCollisionEnter2D(Collision2D collision) // если мяч сталкнется с чем либо
-    {
-        _ballPositionY = transform.position.y; //записывается положение мяча при любом касании
 
-        if (collision.gameObject.TryGetComponent(out PlayerMove player)) // при соприкосновении с платформой
-        {
-            CalculationsMove();
-            Move(_horizForce, _vertForce); // даем направление мячу
-        }
+            if (collision.gameObject.TryGetComponent(out Block block)) // при соприкосновении с блоком
+            {
+                block.Punch(); // вызываем метод удара у этого блока
+            }
 
-         if (collision.gameObject.TryGetComponent(out Block block)) // при соприкосновении с блоком
-        {
-            block.Punch(); // вызываем метод удара у этого блока
         }
-
     }
 }
   

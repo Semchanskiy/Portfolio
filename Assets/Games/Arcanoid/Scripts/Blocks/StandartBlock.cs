@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandartBlock : Block
+namespace GameArcanoid
 {
-    protected override void Specifications()
+    public class StandartBlock : Block
     {
-        base.Specifications();
-        _score = 3;
+        protected override void Specifications()
+        {
+            base.Specifications();
+            _score = 3;
+        }
     }
 }

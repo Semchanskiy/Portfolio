@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlatformerScenes : MonoBehaviour
+
+namespace GamePlatformer
 {
-    public void StartLvl1()
+    public class PlatformerScenes : MonoBehaviour
     {
-        SceneManager.LoadScene("Platformer.Lvl1");
+        public void StartLvl1()
+        {
+            SceneManager.LoadScene("Platformer.Lvl1");
+        }
     }
 }
+

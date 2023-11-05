@@ -2,24 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingCamera : MonoBehaviour
+namespace GamePlatformer
 {
-    private PlatformerPlayer Player;
-    void Start()
+    public class MovingCamera : MonoBehaviour
     {
-        FindPlayer();
-    }
+        private PlayerController _playerController;
 
-    public void FindPlayer()
-    {
-        Player = FindObjectOfType<PlatformerPlayer>();
-        transform.position = new Vector3 (Player.transform.position.x , Player.transform.position.y, -10);
+        void Start()
+        {
+            FindPlayer();
+        }
 
-    }
+        public void FindPlayer()
+        {
+            _playerController = FindObjectOfType<PlayerController>();
+            transform.position = new Vector3(_playerController.transform.position.x,
+                _playerController.transform.position.y, -10);
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector3 (Player.transform.position.x, Player.transform.position.y, -10 );
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            transform.position = new Vector3(_playerController.transform.position.x,
+                _playerController.transform.position.y, -10);
+        }
     }
 }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ArcanoidMenu : MonoBehaviour
+namespace GameArcanoid
 {
+    public class ArcanoidMenu : MonoBehaviour
+    {
 
 
-    
+
+    }
 }

@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LostZone : MonoBehaviour
+namespace GameArcanoid
 {
-    public BallManager _ballManager;
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class LostZone : MonoBehaviour
     {
-        if(collision.gameObject.TryGetComponent(out BallMove ball)) // если сталкивается с шариком
+        public BallManager _ballManager;
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            _ballManager.BallDestroy();
+            if (collision.gameObject.TryGetComponent(out BallMove ball)) // если сталкивается с шариком
+            {
+                _ballManager.BallDestroy();
+            }
         }
     }
 }

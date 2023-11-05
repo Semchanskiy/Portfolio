@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2866027195122179416}
   - component: {fileID: 2866027195122179423}
   - component: {fileID: 2866027195122179422}
+  - component: {fileID: -2639691897692973785}
+  - component: {fileID: -566786612021463302}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -103,25 +105,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97161c54373964f4b95dabea14b8e900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  View: {fileID: 0}
   _trapMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _anim: {fileID: 0}
-  _soundJump: {fileID: 2866027195627041382}
-  _soundStep: {fileID: 2866027196212752399}
-  _stepRate: 0.3
+  _rb: {fileID: 0}
+  _inputMove: {x: 0, y: 0}
+  _targetSpeed: {x: 0, y: 0}
   _maxIdleSpeed: 3
-  speed: 200
-  jumpForse: 7
-  _lives: 0
-  _acceleration: 0.2
-  _decceleration: 15
-  velPower: 1
   _groundChecker: {fileID: 2866027195308582225}
-  _isGrounded: 0
+  _isGrounded: 1
+  PlayerSpawner: {fileID: 0}
+  movingCamera: {fileID: 0}
 --- !u!114 &2866027195122179417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +268,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2639691897692973785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866027195122179413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e21af0981eec74595f3a55a65bc0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 9
+  jumpForse: 8
+  lives: 3
+  acceleration: 13
+  decceleration: 16
+  velPower: 0.96
+  frictionAmount: 0.2
+  _isVulnerability: 0
+--- !u!114 &-566786612021463302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866027195122179413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9b6f0542421cb46a7da55c2adb3714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isFacingRight: 1
+  _nextStep: 0
+  _stepRate: 0.3
+  _anim: {fileID: 0}
+  _soundJump: {fileID: 2866027195627041382}
+  _soundStep: {fileID: 2866027196212752399}
 --- !u!1 &2866027195211014344
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +440,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e2a37ebf4c73f2a4da4b0199011b869a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -531,7 +568,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 99524affd81dc5141bb89a6f033161e5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigBlock : Block
+namespace GameArcanoid
 {
-    protected override void Specifications()
+    public class BigBlock : Block
     {
-        base.Specifications();
-        _score = 7;
+        protected override void Specifications()
+        {
+            base.Specifications();
+            _score = 7;
+        }
     }
 }

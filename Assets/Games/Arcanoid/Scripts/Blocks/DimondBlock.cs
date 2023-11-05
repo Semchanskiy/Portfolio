@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DimondBlock : Block
+namespace GameArcanoid
 {
-    private GameObject obj;
-    public override void Punch()
+    public class DimondBlock : Block
     {
-        obj = GameObject.FindGameObjectWithTag("Enemy");
-        //obj.Damage();
-        base.Punch();
-        
+        private GameObject obj;
+
+        public override void Punch()
+        {
+            obj = GameObject.FindGameObjectWithTag("Enemy");
+            //obj.Damage();
+            base.Punch();
+
+        }
     }
 }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CranchBlock : Block
+namespace GameArcanoid
 {
-    protected override void Specifications()
+    public class CranchBlock : Block
     {
-        _lives = 3;
+        protected override void Specifications()
+        {
+            _lives = 3;
+        }
     }
 }

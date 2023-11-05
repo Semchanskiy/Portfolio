@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigStartBlock : StartBlock
+namespace GameArcanoid
 {
-    protected override void Awake()
+    public class BigStartBlock : StartBlock
     {
-        BuildBlocks._bigStartBlocks.Add(gameObject);
+        protected override void Awake()
+        {
+            BuildBlocks._bigStartBlocks.Add(gameObject);
+        }
     }
 }

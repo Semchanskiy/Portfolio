@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallBlock : Block
+namespace GameArcanoid
 {
-    protected override void Specifications()
+    public class SmallBlock : Block
     {
-        base.Specifications();
-        _score = 1;
+        protected override void Specifications()
+        {
+            base.Specifications();
+            _score = 1;
+        }
     }
 }

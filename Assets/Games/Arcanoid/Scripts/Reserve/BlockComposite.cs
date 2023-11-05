@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockComposite : MonoBehaviour
+namespace GameArcanoid
+{
+    public class BlockComposite : MonoBehaviour
 {
     //[SerializeField] private GameObject test;
     public void ApplyDamage(Vector2 position)
@@ -27,4 +29,5 @@ public class BlockComposite : MonoBehaviour
             }
         }
     }
+}
 }

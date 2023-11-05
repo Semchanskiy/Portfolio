@@ -2,45 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MemoryCard : MonoBehaviour
+namespace GameMemoryCards
 {
-    [SerializeField] private GameObject cardBack;
-    [SerializeField] private SceneController controller;
-
-    private int _id;
-    public int id
+    public class MemoryCard : MonoBehaviour
     {
-        get { return _id; }
-    }
+        [SerializeField] private GameObject cardBack;
+        [SerializeField] private SceneController controller;
 
-    public void SetCard(int id, Sprite image)
-    {
-        _id = id;
-        GetComponent<SpriteRenderer>().sprite = image;
-    }
-    //[SerializeField] private Sprite image;
+        private int _id;
 
-    public void OnMouseDown()
-    {
-        if(cardBack.activeSelf && controller.canReveal)
+        public int id
         {
-            cardBack.SetActive(false);
-            controller.CardRevealed(this);
+            get { return _id; }
         }
-    }
 
-    public void Unreveal()
-    {
-        cardBack.SetActive(true);
-    }
-    void Start()
-    {
-        //GetComponent<SpriteRenderer>().sprite = image;
-    }
+        public void SetCard(int id, Sprite image)
+        {
+            _id = id;
+            GetComponent<SpriteRenderer>().sprite = image;
+        }
+        //[SerializeField] private Sprite image;
 
-    // Update is called once per frame
+        public void OnMouseDown()
+        {
+            if (cardBack.activeSelf && controller.canReveal)
+            {
+                cardBack.SetActive(false);
+                controller.CardRevealed(this);
+            }
+        }
+
+        public void Unreveal()
+        {
+            cardBack.SetActive(true);
+        }
+
+        void Start()
+        {
+            //GetComponent<SpriteRenderer>().sprite = image;
+        }
+
+        // Update is called once per frame
         void Update()
         {
-        
+
         }
+    }
 }

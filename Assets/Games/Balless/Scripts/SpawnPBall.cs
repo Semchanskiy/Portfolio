@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+namespace GameBalless
+{
 
 public class SpawnPBall : MonoBehaviour
 {
@@ -15,4 +17,5 @@ public class SpawnPBall : MonoBehaviour
     {
         
     }
+}
 }

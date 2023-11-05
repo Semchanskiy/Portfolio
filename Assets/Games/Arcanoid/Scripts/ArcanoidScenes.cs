@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ArcanoidScenes : MonoBehaviour
+namespace GameArcanoid
 {
-    public void StartLvl1()
+    public class ArcanoidScenes : MonoBehaviour
     {
-        SceneManager.LoadScene("Arcanoid.Lvl1");
+        public void StartLvl1()
+        {
+            SceneManager.LoadScene("Arcanoid.Lvl1");
+        }
     }
 }
